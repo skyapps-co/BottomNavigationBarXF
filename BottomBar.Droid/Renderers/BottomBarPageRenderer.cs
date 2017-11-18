@@ -31,6 +31,7 @@ using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
 using BottomBar.Droid.Renderers;
 using BottomBar.Droid.Utils;
+using Android.Content;
 
 [assembly: ExportRenderer (typeof (BottomBarPage), typeof (BottomBarPageRenderer))]
 
@@ -43,10 +44,12 @@ namespace BottomBar.Droid.Renderers
 		FrameLayout _frameLayout;
 		IPageController _pageController;
 	    IDictionary<Page, BottomBarBadge> _badges;
+        Context _context;
 
-		public BottomBarPageRenderer ()
+		public BottomBarPageRenderer (Context context)
 		{
 			AutoPackage = false;
+            _context = context;
 		}
 
 		#region IOnTabClickListener
@@ -133,7 +136,7 @@ namespace BottomBar.Droid.Renderers
 					_pageController = PageController.Create (bottomBarPage);
 
 					// create a view which will act as container for Page's
-					_frameLayout = new FrameLayout (Forms.Context);
+					_frameLayout = new FrameLayout (_context);
 					_frameLayout.LayoutParameters = new FrameLayout.LayoutParams (LayoutParams.MatchParent, LayoutParams.MatchParent, GravityFlags.Fill);
 					AddView (_frameLayout, 0);
 
@@ -279,7 +282,9 @@ namespace BottomBar.Droid.Renderers
 		void SetTabItems ()
 		{
 			BottomBarTab [] tabs = Element.Children.Select (page => {
-				var tabIconId = ResourceManagerEx.IdFromTitle (page.Icon, ResourceManager.DrawableClass);
+                var icon = page.Icon;
+                icon.File = icon.File.Replace("-", "_");
+                var tabIconId = ResourceManagerEx.IdFromTitle (icon, ResourceManager.DrawableClass);
 				return new BottomBarTab (tabIconId, page.Title);
 			}).ToArray ();
 
