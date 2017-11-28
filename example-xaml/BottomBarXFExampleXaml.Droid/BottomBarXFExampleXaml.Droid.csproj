@@ -18,7 +18,7 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <ReleaseVersion>1.2.0</ReleaseVersion>
+    <ReleaseVersion>1.3.0</ReleaseVersion>
     <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -129,13 +129,13 @@
       <Project>{96746A3E-074D-40C6-B2E2-CA90313012C6}</Project>
       <Name>BottomBar.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\BottomBar.XamarinForms\BottomBar.XamarinForms.csproj">
-      <Project>{BB1D801D-5EC3-471D-B9EA-98C48D785BAA}</Project>
-      <Name>BottomBar.XamarinForms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BottomBarXFExampleXaml\BottomBarXFExampleXaml.csproj">
-      <Project>{d72b487f-aa32-45b3-92b1-c36bc5659cbf}</Project>
+      <Project>{7817C55B-6F7E-4E0A-9051-3BE0F4F883E2}</Project>
       <Name>BottomBarXFExampleXaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BottomBar.XamarinForms\BottomBar.XamarinForms.csproj">
+      <Project>{409AC756-9C02-42B7-B7F8-4346900DB7F7}</Project>
+      <Name>BottomBar.XamarinForms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
